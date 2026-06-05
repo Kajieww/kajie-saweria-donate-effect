@@ -1,12 +1,35 @@
 name: Deploy Kajie Saweria Worker
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Workers
 
     steps:
-      - name: Test workflow
-        run: echo "Kajie workflow berhasil muncul"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+          secrets: |
+            ROBLOX_API_KEY
+            ROBLOX_UNIVERSE_ID
+            SAWERIA_WEBHOOK_SECRET
+            ADMIN_TEST_SECRET
+            MIN_EFFECT_AMOUNT
+        env:
+          ROBLOX_API_KEY: ${{ secrets.ROBLOX_API_KEY }}
+          ROBLOX_UNIVERSE_ID: ${{ secrets.ROBLOX_UNIVERSE_ID }}
+          SAWERIA_WEBHOOK_SECRET: ${{ secrets.SAWERIA_WEBHOOK_SECRET }}
+          ADMIN_TEST_SECRET: ${{ secrets.ADMIN_TEST_SECRET }}
+          MIN_EFFECT_AMOUNT: ${{ secrets.MIN_EFFECT_AMOUNT }}
