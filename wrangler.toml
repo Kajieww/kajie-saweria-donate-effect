@@ -7,4 +7,4 @@ compatibility_date = "2026-06-05"
 # ganti id di bawah dengan id yang muncul.
 [[kv_namespaces]]
 binding = "KAJIE_DONATION_KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "cca8ffd2eba24f1bb65271aa311593e8"
