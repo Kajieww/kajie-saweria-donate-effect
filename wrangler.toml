@@ -2,9 +2,6 @@ name = "kajie-saweria-donate-effect"
 main = "src/index.js"
 compatibility_date = "2026-06-05"
 
-# Setelah menjalankan:
-# npx wrangler kv namespace create KAJIE_DONATION_KV
-# ganti id di bawah dengan id yang muncul.
 [[kv_namespaces]]
 binding = "KAJIE_DONATION_KV"
 id = "cca8ffd2eba24f1bb65271aa311593e8"
